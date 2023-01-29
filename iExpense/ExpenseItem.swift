@@ -12,6 +12,10 @@ struct ExpenseItem: Identifiable, Codable {
     let name: String
     let type: String
     let amount: Double
+    var amountSummary: Double {
+        print((amount * 100).rounded() / 100)
+        return (amount * 100).rounded() / 100
+    }
     var currencyType: CurrencyType
 }
 

@@ -82,9 +82,11 @@ struct ContentView: View {
                         .foregroundColor(.gray)
                 }
                 Spacer()
-                Text(item.amount, format: .currency(code: item.currencyType.rawValue))
+                Text(item.amountSummary, format: .currency(code: item.currencyType.rawValue))
                     .padding(.trailing, 5)
             }
+            .accessibilityElement()
+            .accessibilityLabel("\(item.name) value is \(String(item.amountSummary)) \(item.currencyType.rawValue)")
         }
         .onDelete { (offsets: IndexSet) in
             type == "Business" ? expenses.businessItems.remove(atOffsets: offsets) : expenses.personalItems.remove(atOffsets: offsets)
